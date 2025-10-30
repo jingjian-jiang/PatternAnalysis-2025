@@ -255,5 +255,3 @@ If using or referencing this work:
 
 ---
 
-✅ **Instructions:**
-Copy the full content of this document and paste it into `recognition/unet_oasis_jingjian/README.md` in your fork on the `feature-jingjian` branch. Then commit the file to the branch.
