@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pth
+*.pt
+*.png
+*.nii
+*.nii.gz
+checkpoints/
+predictions/
+results/
+venv/
+.env
