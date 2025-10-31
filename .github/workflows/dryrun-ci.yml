@@ -27,18 +27,17 @@ jobs:
       - name: Create dummy dataset
         run: |
           mkdir -p sample_data/images sample_data/masks
-          python - <<'PY'
-import numpy as np, os
-from PIL import Image
-os.makedirs('sample_data/images', exist_ok=True)
-os.makedirs('sample_data/masks', exist_ok=True)
-for i in range(3):
-    img = (np.random.rand(64,64)*255).astype('uint8')
-    mask = (np.random.rand(64,64)>0.5).astype('uint8')*255
-    Image.fromarray(img).save(f'sample_data/images/slice_{i}.png')
-    Image.fromarray(mask).save(f'sample_data/masks/slice_{i}.png')
-print("✅ Dummy dataset created successfully.")
-PY
+          echo "import numpy as np, os" > create_dummy.py
+          echo "from PIL import Image" >> create_dummy.py
+          echo "os.makedirs('sample_data/images', exist_ok=True)" >> create_dummy.py
+          echo "os.makedirs('sample_data/masks', exist_ok=True)" >> create_dummy.py
+          echo "for i in range(3):" >> create_dummy.py
+          echo "    img = (np.random.rand(64,64)*255).astype('uint8')" >> create_dummy.py
+          echo "    mask = (np.random.rand(64,64)>0.5).astype('uint8')*255" >> create_dummy.py
+          echo "    Image.fromarray(img).save(f'sample_data/images/slice_{i}.png')" >> create_dummy.py
+          echo "    Image.fromarray(mask).save(f'sample_data/masks/slice_{i}.png')" >> create_dummy.py
+          echo "print('✅ Dummy dataset created successfully.')" >> create_dummy.py
+          python create_dummy.py
 
       - name: Run training dry-run
         working-directory: recognition/unet_oasis_jingjian
